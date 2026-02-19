@@ -116,7 +116,7 @@ export const mockData: AppData = {
           thumbnailUrl:
             "https://v3b.fal.media/files/b/0a883ea8/MuPkcktStazw3ImTOJGIm.png",
           slug: "Wi9cKN6Fg1E",
-        },
+        }
       ],
     },
 
@@ -143,7 +143,7 @@ export const mockData: AppData = {
           thumbnailUrl:
             "https://v3b.fal.media/files/b/0a877b3a/3rE_mrJr2af5XMJxEXuV_.png",
           slug: "kmHt5BHXYvU",
-        },
+        }
       ],
     },
   ],
