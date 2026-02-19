@@ -1,6 +1,6 @@
-import type { AppData } from "../types/video";
+import type { AppData, Video } from "../types/video";
 
-const youtubeIds = [
+const youtubeIds: string[] = [
   "dGcsHMXbSOA",
   "bMknfKXIFA8",
   "Oe421EPjeBE",
@@ -18,7 +18,6 @@ const youtubeIds = [
   "TlB_eWDSMt4",
   "f02mOEt11OQ",
   "7CqJlxBYj-M",
-  "l482T0yNkeo",
   "kqtD5dpn9C8",
   "zOjov-2OZ0E",
   "rfscVS0vtbw",
@@ -39,7 +38,6 @@ const youtubeIds = [
   "YqeW9_5kURI",
   "pRpeEdMmmQ0",
   "9bZkp7q19f0",
-  "RgKAFK5djSk",
   "kJQP7kiw5Fk",
   "dQw4w9WgXcQ",
   "L_jWHffIx5E",
@@ -51,35 +49,37 @@ const youtubeIds = [
   "C0DPdy98e4c",
   "kXYiU_JCYtU",
   "eY52Zsg-KVI",
-  "04854XqcfCY",
   "JGwWNGJdvx8",
   "fJ9rUzIMcZQ",
   "pXRviuL6vMY",
   "SlPhMPnQ58k",
-  "OPf0YbXqDm0",
   "3AtDnEC4zak",
   "Ukg_U3CnJWI",
   "lWA2pjMjpBs",
-  "60ItHLz5WEA"
 ];
 
-const createVideos = (categoryName: string, start: number) => {
-  return youtubeIds.slice(start, start + 20).map((id, index) => ({
-    title: `${categoryName} Video ${index + 1}`,
-    mediaUrl: `https://www.youtube.com/embed/${id}`,
-    mediaType: "YOUTUBE",
-    thumbnailUrl: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
-    slug: id,
-    duration: `${Math.floor(Math.random() * 20) + 5}:${Math.floor(
-      Math.random() * 60
-    )
-      .toString()
-      .padStart(2, "0")}`,
-    views: `${Math.floor(Math.random() * 900 + 100)}K views`,
-    uploadedAt: `${Math.floor(Math.random() * 11) + 1} days ago`,
-    channelName: "TechWorld",
-    channelAvatar: `https://i.pravatar.cc/150?img=${index + 1}`,
-  }));
+const createVideos = (
+  categoryName: string,
+  startIndex: number
+): Video[] => {
+  return youtubeIds.slice(startIndex, startIndex + 20).map((id, index) => {
+    return {
+      title: `${categoryName} Video ${index + 1}`,
+      mediaUrl: `https://www.youtube.com/embed/${id}`,
+      mediaType: "YOUTUBE", // ✅ Correct literal type
+      thumbnailUrl: `https://img.youtube.com/vi/${id}/hqdefault.jpg`,
+      slug: id,
+      duration: `${Math.floor(Math.random() * 15) + 5}:${Math.floor(
+        Math.random() * 60
+      )
+        .toString()
+        .padStart(2, "0")}`,
+      views: `${Math.floor(Math.random() * 900 + 100)}K views`,
+      uploadedAt: `${Math.floor(Math.random() * 10) + 1} days ago`,
+      channelName: "TechWorld",
+      channelAvatar: `https://i.pravatar.cc/150?img=${index + 1}`,
+    };
+  });
 };
 
 export const mockData: AppData = {
